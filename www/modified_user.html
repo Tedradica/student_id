@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>학생증 페이지</title>
+    <script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
+
+    <script>
+
+    temp = location.href.split("?");
+    data= temp[1];
+
+    </script>
+
+  </head>
+  <body>
+
+
+    <div class="add_form">
+      <div class="title_form">
+        등록페이지
+      </div>
+      <div class="image_form">
+        <div class="image">
+          <img src="" alt="">
+        </div>
+        <div class="image_add_btn">
+          <button type="button" id="cameraTakePicture" class="btn btn-primary center">카메라</button>
+          <button type="button" id="cameraGetPicture" class="btn btn-primary center">갤러리</button>
+        </div>
+      </div>
+      <hr/>
+      <div class="info_add">
+
+        <div class="form-group">
+            <label>이름</label>
+            <input type="text" id="update_student_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>학번</label>
+            <input type="text" id="update_student_id" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>학과</label>
+            <input type="text" id="update_dept" class="form-control">
+        </div>
+        <div class="info_btn">
+
+          <button type="button" class="btn btn-primary" id="join_btn" onclick="modifiedUser(data)" >수정</button>
+          <button type="button" class="btn btn-default" id="join_cancel" onclick="goToMain()">취소</button>
+        </div>
+      </div>
+
+    </div>
+
+<div class="result">
+</div>
+
+
+  </body>
+</html>

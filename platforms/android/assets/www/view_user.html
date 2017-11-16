@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    <title>학생증 페이지</title>
+    <script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
+
+    <script>
+
+    temp = location.href.split("?");
+    data= temp[1];
+
+
+    $.ajax({
+      type: 'GET',
+      dataType: 'jsonp',
+      data: { 'join_no':data },
+      url: 'http://54.92.37.34/studentID/selectUser.php',
+      callback: 'callback',
+      success:function(data){
+
+
+        //alert(data.student_name);
+
+            $('#studentName').append(data.student_name);
+            $('#studentId').append(data.student_no);
+            $('#deptName').append(data.dept_name);
+            $('#joinDate').append(data.join_date);
+            $('#student_img').attr("src","http://54.92.37.34/studentID/picture/"+data.photo);
+
+      }
+    });
+
+
+
+
+    </script>
+
+  </head>
+  <body>
+
+
+    <div class="add_form">
+      <div class="title_form">
+        학생증
+      </div>
+      <div class="image_form">
+        <!--  이미지 없을때 "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png" -->
+        <!-- <img src='http://54.92.37.34/studentID/picture/'+data[i].photo+".jpg" width='100px' height='100px' class='img-circle' alt='이미지 처리 실패'> -->
+        <img src="" id="student_img"  onerror="this.src='https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png'" style="width: 160px; height: 160px" >
+
+      </div>
+      <hr/>
+      <div class="info_add">
+
+        <div class="form-group">
+            <label>이름</label>
+            <span id="studentName"></span>
+
+        </div>
+        <div class="form-group">
+            <label>학번</label>
+            <span id="studentId"></span>
+        </div>
+        <div class="form-group">
+            <label>학과</label>
+            <span id="deptName"></span>
+
+        </div>
+
+        <div class="form-group">
+
+            <span id="">위 학생은 영진전문대학교 학생임을 증명합니다.</span><br>
+            <img src="./img/yjc.png" width="300px" height="auto">
+        </div>
+
+        <div class="form-group">
+            <label>수정시간</label>
+            <span id="joinDate"></span>
+
+        </div>
+
+
+        <div class="info_btn">
+          <button type="button" class="btn btn-primary" id="join_btn" onclick="modified(data)">수정</button>
+          <button type="button" class="btn btn-default" id="join_cancel" onclick="goToMain()">돌아가기</button>
+        </div>
+      </div>
+
+    </div>
+
+<div class="result">
+</div>
+
+
+  </body>
+</html>
